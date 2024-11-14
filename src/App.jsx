@@ -1,14 +1,11 @@
-import { useState } from 'react';
-import InputText from './Components/Form/InputText';
-
+import Login from "./Pages/Login/Login"
 function App() {
 
   return (
     <>
-      <InputText
-      type = "text"
-      place= "Nome"
-      />
+
+
+    <Login></Login>
     </>
   )
 }
