@@ -26,7 +26,18 @@ function Login () {
 
         
     }
-        console.log(formData);
+
+    console.log(formData);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        fetch("http://localhost:3000/api/test")
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            
+        })
+    }
     
 
     return (
@@ -56,7 +67,7 @@ function Login () {
         <div className="container-rigth">
             <h1>Crie sua Conta</h1>
 
-            <form action="">
+            <form>
                 <InputText
                     type = "text"
                     place= "Nome"
@@ -91,6 +102,7 @@ function Login () {
                 <Buttom
                         type = "submit"
                         text = "Cadastrar"
+                        onSubmit = {handleSubmit}
                     />
             </div>
 
