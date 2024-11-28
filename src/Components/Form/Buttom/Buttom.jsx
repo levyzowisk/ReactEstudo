@@ -7,7 +7,7 @@ function Buttom (props) {
     return(
     <>
         <div className="buttom-form">
-            <button type={props.type} onSubmit={props.onSubmit}> {props.text} </button>
+            <button type={props.type}> {props.text} </button>
         </div>
     </>)
 }

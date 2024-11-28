@@ -31,7 +31,7 @@ function Login () {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3000/api/test")
+        fetch("http://localhost:3000/api/user")
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -67,7 +67,7 @@ function Login () {
         <div className="container-rigth">
             <h1>Crie sua Conta</h1>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <InputText
                     type = "text"
                     place= "Nome"
@@ -102,7 +102,6 @@ function Login () {
                 <Buttom
                         type = "submit"
                         text = "Cadastrar"
-                        onSubmit = {handleSubmit}
                     />
             </div>
 
