@@ -1,9 +1,85 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
 .container {
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    height: 100vh;
-    border: 1px solid red;
+    /* align-items: center; */
+    height: 65vh;
+    border-radius: 1rem;
+    margin: 10rem 20rem ;
+    /* border: 1px solid red; */
     /* flex-direction: column; */
-    /* background-color: blue; */
+    background-color: white;
+}
+
+.container-left {
+    display: flex;
+    border-radius: 1rem  0rem  0rem 1rem;
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(154, 54, 235);
+    height: inherit;
+    width: 30%;
+    color: white;
+    padding: 1rem;
+}
+
+
+.container-left h1 {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.container-left h3 {
+    text-align: justify ;
+    margin-bottom: 0.8rem;
+}
+
+.container-left p {
+    margin-bottom: 3rem;
+}
+.container-left .buttom-entry {
+    display: flex;
+    justify-content: center;
+}
+
+.container-left button {
+
+    background: none;
+    border-radius: 0.5rem;
+    border: 2px solid white;
+    color: white;
+    padding: 0.7rem 3rem;
+
+}
+
+.container-rigth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;  
+    width: 70%;
+}
+
+.container-rigth h1 {
+    color: rgb(171, 69, 255);
+    margin-bottom: 1.5rem;
+}
+
+.container-rigth .buttom-register {
+    display: flex;
+    justify-content: center;
+}
+
+.container-rigth button {
+    border-radius: 0.5rem;
+    padding: 0.7rem 3rem;
+
+
 }

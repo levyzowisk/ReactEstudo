@@ -8,7 +8,7 @@ function InputText(props: any) {
         <div className="input-container">
             {/* <label htmlFor="input"> <i className="bi bi-person user"></i> </label> */}
             <label htmlFor="input"> <i className={`${props.class} user`}></i> </label>
-            <input required={props.required}  minLength={1} type={props.type}  placeholder={props.place} className="input-text" id="input"/>
+            <input required={props.required} name={props.name}  minLength={1} type={props.type}  placeholder={props.place} className="input-text" id="input" onChange={props.onChange}/>
         </div>
         </>
         
