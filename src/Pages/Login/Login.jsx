@@ -5,7 +5,7 @@ import Buttom from "../../Components/Form/Buttom/Buttom";
 import './Login.css'
 
 function Login () {
-    const [formData, setFormData] = useState({name: "", email: "", password: ""})
+    const [formData, setFormData] = useState({first_name: "",  last_name: "", email: "", password: ""})
 
     const inputChange = (event) => {
         // console.log(event.target);
@@ -31,7 +31,13 @@ function Login () {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3000/api/user")
+        fetch("http://localhost:3000/api/user", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -70,14 +76,23 @@ function Login () {
             <form onSubmit={handleSubmit}>
                 <InputText
                     type = "text"
-                    place= "Nome"
+                    place= "Primeiro Nome"
                     class= "bi bi-person"
                     required = {true}
                     onChange = {inputChange}
-                    name = {"name"}
+                    name = {"first_name"}
                     
 
             />
+
+                <InputText 
+                    type = "text"
+                    place= "Ultimo nome"
+                    class= "bi bi-person"
+                    required = {true}
+                    onChange = {inputChange}
+                    name = {"last_name"}   
+                />
 
                 <InputText
                     type = "text"
@@ -102,6 +117,8 @@ function Login () {
                 <Buttom
                         type = "submit"
                         text = "Cadastrar"
+                        // formMethod = {'post'}
+                        
                     />
             </div>
 

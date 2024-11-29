@@ -11,5 +11,5 @@ function Buttom (props) {
         </div>
     </>)
 }
-
+// formMethod={props.formMethod}
 export default Buttom;
