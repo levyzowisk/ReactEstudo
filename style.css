@@ -4,10 +4,14 @@
     box-sizing: border-box;
     padding: 0px;
     margin: 0px;
-    font-family: "Inter", serif;
+    font-family: "Inter", serif;  
+}
 
+html, body, #root {
+    min-height: 100%;
 }
 
 body {
     background-color: aliceblue;
 }
+

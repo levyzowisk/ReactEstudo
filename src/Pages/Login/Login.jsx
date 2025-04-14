@@ -2,15 +2,19 @@
 import React, { useEffect, useState } from "react";
 import InputText from "../../Components/Form/Input/Input";
 import Buttom from "../../Components/Form/Buttom/Buttom";
-import './Login.css'
+import './Login.css';
+import { validarNome } from "../../validations/globalValidations";
+import { validarEmail } from "../../validations/globalValidations";
+import { useNavigate } from "react-router-dom";
 
 function Login () {
+    const [isVisible, setVisible] = useState(false);
     const [formData, setFormData] = useState({first_name: "",  last_name: "", email: "", password: ""})
+    const navigate  = useNavigate();
 
     const inputChange = (event) => {
-        // console.log(event.target);
-        
-        const {name, value} = event.target;        
+         
+        let {name, value} = event.target;        
         // const data = {
         //     ...formData,
         //     [name]: value
@@ -18,37 +22,43 @@ function Login () {
         // setFormData(data)    
         // console.log(data);
         // Pega o valor anterior e modifica de acordo com o name 
-        
+
+        name == "first_name" | name == "last_name" ? event.target.value = validarNome(value) : null;
+
         setFormData((prevData) => ({
             ...prevData,
             [name]: value
         }))
-
-        
     }
 
     console.log(formData);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3000/api/user", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
+        console.log(event);
+        
+        // fetch("http://localhost:3000/api/user", {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify(formData)
+        //     })
+        // .then(res => res.json())
+        // .then(data => {
+        //     console.log(data);
             
-        })
+        // })
     }
     
+    const redirect = (event) => {
+        event.preventDefault();
+        navigate("/register");
+        
+    }
 
     return (
         <>
-
     <div className="container">
 
         <div className="container-left">
@@ -58,13 +68,14 @@ function Login () {
                 <h3>Bem-Vindo <br />de volta!</h3>
 
                 <p>Acesse sua conta agora <br /> mesmo.</p>
-
-                <div className="buttom-entry">
+                
+                
+                <form onSubmit={redirect} className="buttom-entry">
                     <Buttom
                         type = "submit"
                         text = "Entrar"
                     />
-                </div>
+                </form>
 
             </div>
 
@@ -79,6 +90,7 @@ function Login () {
                     place= "Primeiro Nome"
                     class= "bi bi-person"
                     required = {true}
+                    // onBlur = {onBlur}
                     onChange = {inputChange}
                     name = {"first_name"}
                     
@@ -95,7 +107,8 @@ function Login () {
                 />
 
                 <InputText
-                    type = "text"
+                    type = "email"
+                    onBlur ={validarEmail}
                     place= "Email"
                     class= "bi bi-envelope"
                     required = {true}
@@ -105,13 +118,18 @@ function Login () {
                 />
 
                 <InputText
-                    type = "password"
+                    type = {isVisible ? "text" : "password"}
                     place = "Senha"
                     class = "bi bi-file-lock"
                     required = {true}
+                    onClick = {() => setVisible(!isVisible)}
+                    iconeye = {isVisible ? 'bi-eye-slash-fill' : 'bi-eye-fill'}
                     onChange = {inputChange}
+                    icon = "bi bi-eye-fill"
                     name = {"password"}
-            />
+                    // A verificar, primeiro, onclick não seria a melhor opção.
+                    // Essa função teria que mudar a visibilidade do input password
+             />
             <div className="buttom-register">
 
                 <Buttom

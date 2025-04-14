@@ -2,7 +2,6 @@ import React from 'react';
 import './Buttom.css';
 
 function Buttom (props) {
-    // console.log(props);
 
     return(
     <>
